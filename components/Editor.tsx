@@ -51,12 +51,12 @@ export function Editor({ className }: Props) {
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 rounded-md border h-full">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex flex-col space-y-6 rounded-md border h-full">
                 <div className="border-b p-5 flex items-center sm:justify-between flex-wrap sm:flex-row gap-2">
                     <div className="flex items-center flex-wrap gap-5">
 
                         <span className="border bg-zinc-100 p-2 rounded-md">
-                            Markdown Editor
+                            マークダウンEditor
                         </span>
                     </div>
 
@@ -67,29 +67,28 @@ export function Editor({ className }: Props) {
                     control={form.control}
                     name="content"
                     render={({ field }: any) => (
-                        <FormItem>
+                        <FormItem className="flex-1">
                             <FormControl>
                                 <div
-                                    // TODO 高さをh-fullで調整したい
                                     className={cn(
-                                        "w-full flex p-2 gap-2 divide-x divide-gray-300 h-[50vh]"
+                                        "h-[93%] w-full flex p-2 gap-2 divide-x divide-gray-300"
                                     )}
                                 >
                                     <Textarea
-                                        placeholder="内容..."
+                                        placeholder="内容を入力して下さい..."
                                         {...field}
                                         className={cn(
-                                            "shadow-none w-1/2 border-none text-lg font-medium leading-relaxed resize-none h-full"
+                                            "w-1/2 shadow-none border-none text-lg font-medium leading-relaxed resize-none"
                                         )}
                                     />
 
                                     <div className="w-1/2">
-                                        <MarkdownPreviewer content={form.getValues().content} />
+                                        <MarkdownPreviewer content={form.getValues().content} className="text-lg px-4 py-2"/>
                                     </div>
                                 </div>
                             </FormControl>
 
-                            <div className="p-3">
+                            <div className="px-3">
                                 <FormMessage />
                             </div>
                         </FormItem>
